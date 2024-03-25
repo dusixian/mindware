@@ -51,9 +51,9 @@ class DataManager(object):
             if col_name in columns_missed:
                 cleaned_vals = np.array([val for val in col_vals if not pd.isnull(val)])
 
-            if dtype in [np.int, np.int16, np.int32, np.int64]:
+            if dtype in [int, np.int16, np.int32, np.int64]:
                 feat_type = DISCRETE
-            elif dtype in [np.float, np.float16, np.float32, np.float64, np.double]:
+            elif dtype in [float, np.float16, np.float32, np.float64, np.double]:
                 feat_type = DISCRETE if is_discrete(cleaned_vals) else NUMERICAL
             else:
                 flag, cand_values, ab_idx, is_str = detect_abnormal_type(col_vals)
